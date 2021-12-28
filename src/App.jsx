@@ -3,8 +3,6 @@ import { useState, useEffect, useMemo } from "react";
 import { useWeb3 } from "@3rdweb/hooks";
 import { UnsupportedChainIdError } from "@web3-react/core";
 import { ThirdwebSDK } from "@3rdweb/sdk";
-import dotenv from "dotenv";
-dotenv.config();
 
 const sdk = new ThirdwebSDK("rinkeby");
 
@@ -146,7 +144,7 @@ const App = () => {
     if (!address) {
       setHasClaimedNFT(false);
       return;
-    } 
+    }
 
     const NFTChecker = async () => {
       const module = await bundleDropModule();
@@ -173,7 +171,7 @@ const App = () => {
     sdk.setProviderOrSigner(signer);
   }, [signer]);
 
-  if (hasClaimedNFT === undefined || !provider) {
+  if (hasClaimedNFT === undefined || !connectWallet) {
     return <div className="loader" />;
   }
 
