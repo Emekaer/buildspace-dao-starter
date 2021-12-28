@@ -38,6 +38,7 @@ const App = () => {
 
   useEffect(() => {
     if (!hasClaimedNFT) {
+      setHasClaimedNFT(false);
       return;
     }
     // A simple call to voteModule.getAll() to grab the proposals.
@@ -60,6 +61,7 @@ const App = () => {
 
   useEffect(() => {
     if (!hasClaimedNFT) {
+      setHasClaimedNFT(false);
       return;
     }
 
@@ -88,6 +90,7 @@ const App = () => {
 
   useEffect(() => {
     if (!hasClaimedNFT) {
+      setHasClaimedNFT(false);
       return;
     }
 
@@ -108,6 +111,7 @@ const App = () => {
 
   useEffect(() => {
     if (!hasClaimedNFT) {
+      setHasClaimedNFT(false);
       return;
     }
 
@@ -142,7 +146,7 @@ const App = () => {
     if (!address) {
       setHasClaimedNFT(false);
       return;
-    }
+    } 
 
     const NFTChecker = async () => {
       const module = await bundleDropModule();
@@ -169,11 +173,10 @@ const App = () => {
     sdk.setProviderOrSigner(signer);
   }, [signer]);
 
-  
   if (hasClaimedNFT === undefined || !provider) {
     return <div className="loader" />;
   }
-  
+
   if (error instanceof UnsupportedChainIdError) {
     return (
       <div className="unsupported-network">
@@ -185,7 +188,7 @@ const App = () => {
       </div>
     );
   }
-  
+
   if (error) {
     return <div className="error">{error.message}</div>;
   }
